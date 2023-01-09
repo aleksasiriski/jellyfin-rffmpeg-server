@@ -16,7 +16,7 @@ Copy the public ssh key to the worker:
 docker compose exec -it jellyfin ssh-copy-id -i /config/rffmpeg/.ssh/id_rsa.pub <user>@<host>
 ```
 
-Add the worker to rffmeg:
+Add the worker to rffmpeg:
 ```
 docker compose exec -it jellyfin rffmpeg add [--weight 1] [--name myfirsthost] <ip address of the host>
 ```
