@@ -21,7 +21,7 @@ Add the worker to rffmeg:
 docker compose exec -it jellyfin rffmpeg add [--weight 1] [--name myfirsthost] <ip address of the host>
 ```
 
-You can check the status of rffmpeg using this:
+Check the status of rffmpeg:
 
 ```
 docker compose exec -it jellyfin rffmpeg status
