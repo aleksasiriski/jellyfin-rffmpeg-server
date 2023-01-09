@@ -16,19 +16,15 @@ services:
     image: docker.io/itsthenetwork/nfs-server-alpine:latest
     cap_add:
       - SYS_ADMIN
-      - SYS_MODULE
     environment:
       - TZ=Europe/Berlin
-      - SYNC=true
-      - PERMITTED=*
-      - SHARED_DIRECTORY=/var/jellyfin
-      - SHARED_DIRECTORY_2=/var/jellyfin/cache
+      - NFS_EXPORT_0="/var/jellyfin/config *(rw,sync,no_subtree_check,no_root_squash)"
+      - NFS_EXPORT_1="/var/jellyfin/cache *(rw,sync,no_subtree_check,no_root_squash)"
     ports:
       - ${NFS_LAN_IP:-}:2049:2049
     volumes:
-      - jellyfin-conf:/var/jellyfin:z
+      - jellyfin-conf:/var/jellyfin/config:z
       - jellyfin-cache:/var/jellyfin/cache:z
-      - /lib/modules:/lib/modules:ro
     restart: always
 volumes:
   jellyfin-conf:
